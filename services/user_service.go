@@ -27,6 +27,7 @@ func (s userService) Register(req RegisterBody) (*UUID, error) {
 	}
 
 	if err != nil {
+		logs.Error("Failed to hash password")
 		return nil, errs.NewUnexpectedError("Failed to hash password")
 	}
 
@@ -48,6 +49,8 @@ func (s userService) Register(req RegisterBody) (*UUID, error) {
 	userResponse := UUID{
 		UUID: newUser.UUID,
 	}
+	registerLog := "User " + user.UUID.String() + " has been registered"
+	logs.Info(registerLog)
 	return &userResponse, nil
 }
 
@@ -73,6 +76,8 @@ func (s userService) Login(req LoginBody) (*LoginBody, error) {
 		UUID:     loginUser.UUID,
 		Password: loginUser.Password,
 	}
+	loginLog := "User " + loginUser.UUID.String() + " has been logged in"
+	logs.Info(loginLog)
 	return &allUserResponse, nil
 }
 func (s userService) GetAllUsers() ([]GetAllUsersResponse, error) {

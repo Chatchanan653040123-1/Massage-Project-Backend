@@ -1,0 +1,16 @@
+{"level":"info","timestamp":"2023-12-10T00:59:47.556+0700","caller":"Massage-Project-Backend/main.go:56","msg":"Product service started at port 8080"}
+{"level":"info","timestamp":"2023-12-10T01:00:01.860+0700","caller":"services/user_service.go:80","msg":"User 29f07ac4-218e-48c2-a760-81002917e44f has been logged in"}
+{"level":"info","timestamp":"2023-12-10T01:00:02.409+0700","caller":"services/user_service.go:80","msg":"User 29f07ac4-218e-48c2-a760-81002917e44f has been logged in"}
+{"level":"info","timestamp":"2023-12-10T01:01:05.322+0700","caller":"services/user_service.go:80","msg":"User 29f07ac4-218e-48c2-a760-81002917e44f has been logged in"}
+{"level":"info","timestamp":"2023-12-10T01:05:40.516+0700","caller":"Massage-Project-Backend/main.go:56","msg":"Product service started at port 8080"}
+{"level":"info","timestamp":"2023-12-10T01:06:09.670+0700","caller":"services/user_service.go:80","msg":"User 29f07ac4-218e-48c2-a760-81002917e44f has been logged in"}
+{"level":"info","timestamp":"2023-12-10T01:15:00.868+0700","caller":"Massage-Project-Backend/main.go:56","msg":"Product service started at port 8080"}
+{"level":"info","timestamp":"2023-12-10T01:15:16.096+0700","caller":"services/user_service.go:80","msg":"User 29f07ac4-218e-48c2-a760-81002917e44f has been logged in"}
+{"level":"info","timestamp":"2023-12-10T01:15:16.524+0700","caller":"handlers/middleware.go:39","msg":"User 29f07ac4-218e-48c2-a760-81002917e44f has been authenticated byMethod: GET, URL: /api/users, IP: 127.0.0.1\n"}
+{"level":"info","timestamp":"2023-12-10T01:20:28.538+0700","caller":"services/user_service.go:80","msg":"User 29f07ac4-218e-48c2-a760-81002917e44f has been logged in"}
+{"level":"info","timestamp":"2023-12-10T01:27:52.413+0700","caller":"services/user_service.go:80","msg":"User 29f07ac4-218e-48c2-a760-81002917e44f has been logged in"}
+{"level":"info","timestamp":"2023-12-10T01:29:01.747+0700","caller":"services/user_service.go:80","msg":"User 29f07ac4-218e-48c2-a760-81002917e44f has been logged in"}
+{"level":"info","timestamp":"2023-12-10T01:30:27.829+0700","caller":"services/user_service.go:80","msg":"User 29f07ac4-218e-48c2-a760-81002917e44f has been logged in"}
+{"level":"info","timestamp":"2023-12-10T01:31:19.346+0700","caller":"services/user_service.go:80","msg":"User 29f07ac4-218e-48c2-a760-81002917e44f has been logged in"}
+{"level":"info","timestamp":"2023-12-10T01:31:34.225+0700","caller":"handlers/middleware.go:39","msg":"User 29f07ac4-218e-48c2-a760-81002917e44f has been authenticated byMethod: GET, URL: /api/users, IP: 127.0.0.1\n"}
+{"level":"info","timestamp":"2023-12-10T01:32:43.637+0700","caller":"services/user_service.go:80","msg":"User 29f07ac4-218e-48c2-a760-81002917e44f has been logged in"}

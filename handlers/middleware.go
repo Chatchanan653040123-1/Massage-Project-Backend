@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"fmt"
+	"massage/logs"
 	"net/http"
 	"os"
 	"strings"
@@ -22,7 +23,6 @@ func JWTAuthen() fiber.Handler {
 				return nil, fmt.Errorf("unexpected signing method: %v", token.Header["alg"])
 			}
 
-			// hmacSampleSecret is a []byte containing your secret, e.g. []byte("my_secret_key")
 			return hmacSampleSecret, nil
 		})
 
@@ -35,7 +35,9 @@ func JWTAuthen() fiber.Handler {
 		} else {
 			return c.Status(http.StatusForbidden).JSON(fiber.Map{"status": "forbidden", "message": "Invalid token"})
 		}
-
+		info := fmt.Sprintf("Method: %s, URL: %s, IP: %s", c.Method(), c.OriginalURL(), c.IP())
+		logs.Info("User " + c.Locals("uuid").(string) + " has been authenticated by " + info)
+		fmt.Print(info)
 		return c.Next()
 	}
 }

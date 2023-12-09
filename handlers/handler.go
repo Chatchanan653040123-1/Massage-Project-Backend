@@ -66,7 +66,7 @@ func (h userHandler) Login(c *fiber.Ctx) error {
 		token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 			"uuid": response.UUID,
 			"iat":  time.Now().Unix(),
-			"exp":  time.Now().Add(time.Minute * 1).Unix(),
+			"exp":  time.Now().Add(time.Hour * 1).Unix(),
 		})
 		tokenString, err := token.SignedString(hmacSampleSecret)
 		if err != nil {

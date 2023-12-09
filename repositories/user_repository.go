@@ -44,5 +44,6 @@ func (r userRepositoryDB) GetAllUsers() ([]Users, error) {
 	if err.Error != nil {
 		return nil, err.Error
 	}
+
 	return users, nil
 }

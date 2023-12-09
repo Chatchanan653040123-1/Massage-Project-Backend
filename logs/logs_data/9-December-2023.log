@@ -18,3 +18,9 @@
 {"level":"info","timestamp":"2023-12-09T08:45:17.874+0700","caller":"Massage-Project-Backend/main.go:56","msg":"Product service started at port 5000"}
 {"level":"info","timestamp":"2023-12-09T08:53:49.980+0700","caller":"Massage-Project-Backend/main.go:56","msg":"Product service started at port 5000"}
 {"level":"info","timestamp":"2023-12-09T09:55:36.426+0700","caller":"Massage-Project-Backend/main.go:56","msg":"Product service started at port 5000"}
+{"level":"info","timestamp":"2023-12-09T21:33:37.925+0700","caller":"Massage-Project-Backend/main.go:56","msg":"Product service started at port 8080"}
+{"level":"error","timestamp":"2023-12-09T21:46:35.098+0700","caller":"services/user_service.go:44","msg":"ERROR: duplicate key value violates unique constraint \"users_email_key\" (SQLSTATE 23505)"}
+{"level":"error","timestamp":"2023-12-09T21:54:29.454+0700","caller":"services/user_service.go:68","msg":"record not found"}
+{"level":"info","timestamp":"2023-12-09T22:47:31.401+0700","caller":"Massage-Project-Backend/main.go:56","msg":"Product service started at port 8080"}
+{"level":"error","timestamp":"2023-12-09T22:47:45.323+0700","caller":"services/user_service.go:68","msg":"record not found"}
+{"level":"error","timestamp":"2023-12-09T23:25:33.263+0700","caller":"services/user_service.go:68","msg":"failed to connect to `host=localhost user=postgres database=postgres`: dial error (dial tcp 127.0.0.1:5432: connectex: No connection could be made because the target machine actively refused it.)"}
