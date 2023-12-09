@@ -1,0 +1,17 @@
+{"level":"info","timestamp":"2023-12-09T06:06:42.938+0700","caller":"Massage-Project-Backend/main.go:44","msg":"Product service started at port "}
+{"level":"info","timestamp":"2023-12-09T06:09:24.888+0700","caller":"Massage-Project-Backend/main.go:45","msg":"Product service started at port 5000"}
+{"level":"info","timestamp":"2023-12-09T07:55:57.601+0700","caller":"Massage-Project-Backend/main.go:55","msg":"Product service started at port 5000"}
+{"level":"info","timestamp":"2023-12-09T08:01:02.336+0700","caller":"Massage-Project-Backend/main.go:55","msg":"Product service started at port 5000"}
+{"level":"error","timestamp":"2023-12-09T08:01:59.540+0700","caller":"services/user_service.go:66","msg":"record not found"}
+{"level":"error","timestamp":"2023-12-09T08:02:02.397+0700","caller":"services/user_service.go:66","msg":"record not found"}
+{"level":"error","timestamp":"2023-12-09T08:04:40.968+0700","caller":"services/user_service.go:42","msg":"ERROR: duplicate key value violates unique constraint \"users_pkey\" (SQLSTATE 23505)"}
+{"level":"error","timestamp":"2023-12-09T08:04:49.008+0700","caller":"services/user_service.go:42","msg":"ERROR: duplicate key value violates unique constraint \"users_pkey\" (SQLSTATE 23505)"}
+{"level":"error","timestamp":"2023-12-09T08:04:54.303+0700","caller":"services/user_service.go:42","msg":"ERROR: duplicate key value violates unique constraint \"users_pkey\" (SQLSTATE 23505)"}
+{"level":"error","timestamp":"2023-12-09T08:05:03.598+0700","caller":"services/user_service.go:42","msg":"ERROR: duplicate key value violates unique constraint \"users_pkey\" (SQLSTATE 23505)"}
+{"level":"info","timestamp":"2023-12-09T08:07:51.599+0700","caller":"Massage-Project-Backend/main.go:55","msg":"Product service started at port 5000"}
+{"level":"error","timestamp":"2023-12-09T08:07:59.688+0700","caller":"services/user_service.go:44","msg":"ERROR: duplicate key value violates unique constraint \"users_email_key\" (SQLSTATE 23505)"}
+{"level":"error","timestamp":"2023-12-09T08:08:43.350+0700","caller":"services/user_service.go:44","msg":"ERROR: duplicate key value violates unique constraint \"users_email_key\" (SQLSTATE 23505)"}
+{"level":"error","timestamp":"2023-12-09T08:09:04.462+0700","caller":"services/user_service.go:44","msg":"ERROR: duplicate key value violates unique constraint \"users_email_key\" (SQLSTATE 23505)"}
+{"level":"info","timestamp":"2023-12-09T08:11:01.076+0700","caller":"Massage-Project-Backend/main.go:55","msg":"Product service started at port 5000"}
+{"level":"error","timestamp":"2023-12-09T08:11:20.320+0700","caller":"services/user_service.go:44","msg":"ERROR: duplicate key value violates unique constraint \"users_email_key\" (SQLSTATE 23505)"}
+{"level":"info","timestamp":"2023-12-09T08:18:07.258+0700","caller":"Massage-Project-Backend/main.go:56","msg":"Product service started at port 5000"}
