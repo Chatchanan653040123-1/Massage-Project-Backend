@@ -17,3 +17,4 @@
 {"level":"info","timestamp":"2023-12-09T08:18:07.258+0700","caller":"Massage-Project-Backend/main.go:56","msg":"Product service started at port 5000"}
 {"level":"info","timestamp":"2023-12-09T08:45:17.874+0700","caller":"Massage-Project-Backend/main.go:56","msg":"Product service started at port 5000"}
 {"level":"info","timestamp":"2023-12-09T08:53:49.980+0700","caller":"Massage-Project-Backend/main.go:56","msg":"Product service started at port 5000"}
+{"level":"info","timestamp":"2023-12-09T09:55:36.426+0700","caller":"Massage-Project-Backend/main.go:56","msg":"Product service started at port 5000"}
