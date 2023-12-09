@@ -15,3 +15,5 @@
 {"level":"info","timestamp":"2023-12-09T08:11:01.076+0700","caller":"Massage-Project-Backend/main.go:55","msg":"Product service started at port 5000"}
 {"level":"error","timestamp":"2023-12-09T08:11:20.320+0700","caller":"services/user_service.go:44","msg":"ERROR: duplicate key value violates unique constraint \"users_email_key\" (SQLSTATE 23505)"}
 {"level":"info","timestamp":"2023-12-09T08:18:07.258+0700","caller":"Massage-Project-Backend/main.go:56","msg":"Product service started at port 5000"}
+{"level":"info","timestamp":"2023-12-09T08:45:17.874+0700","caller":"Massage-Project-Backend/main.go:56","msg":"Product service started at port 5000"}
+{"level":"info","timestamp":"2023-12-09T08:53:49.980+0700","caller":"Massage-Project-Backend/main.go:56","msg":"Product service started at port 5000"}

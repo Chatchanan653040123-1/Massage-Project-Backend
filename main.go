@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
-	"massage/database"
+	"massage/databases"
 	"massage/handlers"
 	"massage/logs"
 	"massage/repositories"
@@ -19,11 +19,11 @@ import (
 
 func main() {
 	initConfig()
-	db, err := database.CreateDB()
+	db, err := databases.CreateDB()
 	if err != nil {
 		panic(err)
 	}
-	database.AutoMigrate(db)
+	databases.AutoMigrate(db)
 	userRepositoryDB := repositories.NewUserRespositoryDB(db)
 	userService := services.NewUserService(userRepositoryDB)
 	userHandler := handlers.NewUserHandler(userService)
@@ -57,7 +57,7 @@ func main() {
 	app.Listen(fmt.Sprintf(":%v", viper.GetInt("APP_PORT")))
 }
 func initConfig() {
-	err := godotenv.Load("config.env")
+	err := godotenv.Load("configs/config.env")
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}
