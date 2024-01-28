@@ -2,13 +2,13 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"massage/databases"
 	"massage/handlers"
 	"massage/logs"
 	"massage/repositories"
 	"massage/services"
 	"strings"
+	"time"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
@@ -21,12 +21,13 @@ func main() {
 	initConfig()
 	db, err := databases.CreateDB()
 	if err != nil {
-		panic(err)
+		logs.Error(err)
 	}
 	databases.AutoMigrate(db)
 	userRepositoryDB := repositories.NewUserRespositoryDB(db)
 	userService := services.NewUserService(userRepositoryDB)
 	userHandler := handlers.NewUserHandler(userService)
+
 	app := fiber.New()
 
 	app.Use(cors.New(cors.Config{
@@ -48,18 +49,28 @@ func main() {
 		TimeFormat: "2 Jan 2006 15:04:05",
 		TimeZone:   "Asia/Bangkok",
 	}))
-	app.Post("/api/register", userHandler.Registers)
-	app.Post("/api/login", userHandler.Login)
-	authorized := app.Group("/api", handlers.JWTAuthen())
-	authorized.Get("/users", userHandler.GetAllUsers)
+	//authentication
+	app.Post("/register", userHandler.Registers)
+	app.Post("/login", userHandler.Login)
+	//when entity is authenticated
+	authorized := app.Group("/authorized", handlers.JWTAuthen())
+	//user
+	normalUser := authorized.Group("/user", userHandler.UserPermissionLevel1())
+	normalUser.Get("/account", userHandler.GetMyAccount)
+	//admin
+	normalAdmin := authorized.Group("/admin", userHandler.AdminPermissionLevel1())
+	normalAdmin.Get("/get/:uuid", userHandler.GetUser)
+	superAdmin := authorized.Group("/admin", userHandler.AdminPermissionLevel2())
+	superAdmin.Get("/getall", userHandler.GetAllUsers)
 
-	logs.Info("Product service started at port " + viper.GetString("APP_PORT"))
+	logData := fmt.Sprintf("Server is running....\nService: %v\n Ip: %v\n Port: %v\n Date: %v %v %v\n Time: %v:%v:%v", viper.GetString("APP_NAME"), viper.GetString("DB_HOST"), viper.GetInt("APP_PORT"), time.Now().Day(), time.Now().Month(), time.Now().Year(), time.Now().Hour(), time.Now().Minute(), time.Now().Second())
+	logs.Info(logData)
 	app.Listen(fmt.Sprintf(":%v", viper.GetInt("APP_PORT")))
 }
 func initConfig() {
-	err := godotenv.Load("configs/config.env")
+	err := godotenv.Load("configs/.env")
 	if err != nil {
-		log.Fatal("Error loading .env file")
+		logs.Error("Error loading env file")
 	}
 
 	viper.SetConfigName("config")

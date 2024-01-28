@@ -14,3 +14,32 @@
 {"level":"info","timestamp":"2023-12-10T01:31:19.346+0700","caller":"services/user_service.go:80","msg":"User 29f07ac4-218e-48c2-a760-81002917e44f has been logged in"}
 {"level":"info","timestamp":"2023-12-10T01:31:34.225+0700","caller":"handlers/middleware.go:39","msg":"User 29f07ac4-218e-48c2-a760-81002917e44f has been authenticated byMethod: GET, URL: /api/users, IP: 127.0.0.1\n"}
 {"level":"info","timestamp":"2023-12-10T01:32:43.637+0700","caller":"services/user_service.go:80","msg":"User 29f07ac4-218e-48c2-a760-81002917e44f has been logged in"}
+{"level":"info","timestamp":"2023-12-10T01:54:50.466+0700","caller":"Massage-Project-Backend/main.go:55","msg":"Product service started at port 8080"}
+{"level":"info","timestamp":"2023-12-10T01:55:32.982+0700","caller":"Massage-Project-Backend/main.go:55","msg":"Product service started at port 8080"}
+{"level":"info","timestamp":"2023-12-10T01:56:20.875+0700","caller":"services/user_service.go:80","msg":"User 29f07ac4-218e-48c2-a760-81002917e44f has been logged in"}
+{"level":"info","timestamp":"2023-12-10T01:56:23.244+0700","caller":"handlers/middleware.go:39","msg":"User 29f07ac4-218e-48c2-a760-81002917e44f has been authenticated by Method: GET, URL: /api/users, IP: 127.0.0.1"}
+{"level":"info","timestamp":"2023-12-10T01:57:12.836+0700","caller":"handlers/middleware.go:39","msg":"User 29f07ac4-218e-48c2-a760-81002917e44f has been authenticated by Method: GET, URL: /api/users, IP: 127.0.0.1"}
+{"level":"info","timestamp":"2023-12-10T01:57:13.403+0700","caller":"handlers/middleware.go:39","msg":"User 29f07ac4-218e-48c2-a760-81002917e44f has been authenticated by Method: GET, URL: /api/users, IP: 127.0.0.1"}
+{"level":"info","timestamp":"2023-12-10T01:58:02.268+0700","caller":"services/user_service.go:80","msg":"User 29f07ac4-218e-48c2-a760-81002917e44f has been logged in"}
+{"level":"info","timestamp":"2023-12-10T01:58:11.997+0700","caller":"services/user_service.go:80","msg":"User 29f07ac4-218e-48c2-a760-81002917e44f has been logged in"}
+{"level":"error","timestamp":"2023-12-10T01:58:17.351+0700","caller":"repositories/user_repository.go:30","msg":"record not found"}
+{"level":"error","timestamp":"2023-12-10T01:58:17.824+0700","caller":"services/user_service.go:71","msg":"record not found"}
+{"level":"info","timestamp":"2023-12-10T01:59:36.764+0700","caller":"services/user_service.go:80","msg":"User 29f07ac4-218e-48c2-a760-81002917e44f has been logged in"}
+{"level":"info","timestamp":"2023-12-10T02:01:59.567+0700","caller":"Massage-Project-Backend/main.go:55","msg":"Product service started at port 8080"}
+{"level":"info","timestamp":"2023-12-10T02:03:40.237+0700","caller":"Massage-Project-Backend/main.go:55","msg":"Product service started at port 8080"}
+{"level":"info","timestamp":"2023-12-10T02:03:44.274+0700","caller":"handlers/handler.go:83","msg":"User 29f07ac4-218e-48c2-a760-81002917e44f can't log in because password is incorrect"}
+{"level":"info","timestamp":"2023-12-10T02:04:15.597+0700","caller":"Massage-Project-Backend/main.go:55","msg":"Product service started at port 8080"}
+{"level":"info","timestamp":"2023-12-10T02:04:20.011+0700","caller":"handlers/handler.go:83","msg":"User 29f07ac4-218e-48c2-a760-81002917e44f can't log in because password is incorrect, compare: crypto/bcrypt: hashedPassword is not the hash of the given password and response.Password: $2a$10$xMVKA4lg9fdxD9R28B/Ty.JLLhl1SoB7vI/DQW6r..j8C6usmx2NO and request.Password: 123549846231"}
+{"level":"info","timestamp":"2023-12-10T02:06:30.470+0700","caller":"Massage-Project-Backend/main.go:55","msg":"Product service started at port 8080"}
+{"level":"error","timestamp":"2023-12-10T02:06:36.525+0700","caller":"handlers/handler.go:83","msg":"User 29f07ac4-218e-48c2-a760-81002917e44f can't log in because password is incorrect\ncompare: crypto/bcrypt: hashedPassword is not the hash of the given password\nIncorrect password: 123549846231"}
+{"level":"info","timestamp":"2023-12-10T02:09:06.111+0700","caller":"Massage-Project-Backend/main.go:55","msg":"Service massage started at port 8080"}
+{"level":"info","timestamp":"2023-12-10T02:09:54.154+0700","caller":"Massage-Project-Backend/main.go:55","msg":"Service massage started at port 8080IP: 202.29.230.197"}
+{"level":"info","timestamp":"2023-12-10T02:10:44.779+0700","caller":"Massage-Project-Backend/main.go:55","msg":"Service:massage => started at port 8080\nIP: 202.29.230.197"}
+{"level":"info","timestamp":"2023-12-10T02:11:12.895+0700","caller":"Massage-Project-Backend/main.go:55","msg":"Service:massage has been started \n8080\nIP: 202.29.230.197"}
+{"level":"info","timestamp":"2023-12-10T02:11:46.244+0700","caller":"Massage-Project-Backend/main.go:55","msg":"Service:massage has been started \nPORT:8080\nIP: 202.29.230.197"}
+{"level":"error","timestamp":"2023-12-10T02:12:41.226+0700","caller":"handlers/handler.go:83","msg":"User 29f07ac4-218e-48c2-a760-81002917e44f can't log in because password is incorrect\ncompare: crypto/bcrypt: hashedPassword is not the hash of the given password\nIncorrect password: 123549846231"}
+{"level":"info","timestamp":"2023-12-10T02:12:53.949+0700","caller":"handlers/handler.go:78","msg":"User 29f07ac4-218e-48c2-a760-81002917e44f has been logged in"}
+{"level":"info","timestamp":"2023-12-10T02:14:34.553+0700","caller":"Massage-Project-Backend/main.go:56","msg":"Service:massage has been started \nPORT:8080\nIP: 202.29.230.197\nAt:2023-12-10 02:14:33.940406 +0700 +07 m=+0.097885801"}
+{"level":"info","timestamp":"2023-12-10T02:19:55.120+0700","caller":"Massage-Project-Backend/main.go:56","msg":"Server is running....\nService: Massage\n Ip: \n Port: 8080\n Date: 10December2023\n Time: 21954"}
+{"level":"info","timestamp":"2023-12-10T02:21:21.737+0700","caller":"Massage-Project-Backend/main.go:56","msg":"Server is running....\nService: Massage\n Ip: localhost\n Port: 8080\n Date: 10 December 2023\n Time: 2:21:20"}
+{"level":"info","timestamp":"2023-12-10T09:24:10.696+0700","caller":"Massage-Project-Backend/main.go:56","msg":"Product service started at port 8080"}

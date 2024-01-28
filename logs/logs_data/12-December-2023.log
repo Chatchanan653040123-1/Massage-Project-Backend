@@ -1,0 +1,3 @@
+{"level":"info","timestamp":"2023-12-12T14:13:40.165+0700","caller":"Massage-Project-Backend/main.go:56","msg":"Server is running....\nService: Massage\n Ip: localhost\n Port: 8080\n Date: 12 December 2023\n Time: 14:13:37"}
+{"level":"info","timestamp":"2023-12-12T14:14:17.881+0700","caller":"handlers/handler.go:78","msg":"User 29f07ac4-218e-48c2-a760-81002917e44f has been logged in"}
+{"level":"info","timestamp":"2023-12-12T14:14:39.051+0700","caller":"handlers/middleware.go:39","msg":"User 29f07ac4-218e-48c2-a760-81002917e44f has been authenticated by Method: GET, URL: /api/users, IP: 127.0.0.1"}

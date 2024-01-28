@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"massage/logs"
 	"massage/services"
 	"net/http"
 	"os"
@@ -8,6 +9,7 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/golang-jwt/jwt/v5"
+	"github.com/google/uuid"
 	"github.com/spf13/viper"
 	"golang.org/x/crypto/bcrypt"
 )
@@ -36,7 +38,8 @@ func (h userHandler) Registers(c *fiber.Ctx) error {
 			"Error": "Invalid Signup Credentials",
 		})
 	}
-
+	registerLog := "User " + response.UUID.String() + " has been registered"
+	logs.Info(registerLog)
 	return c.JSON(response)
 
 }
@@ -72,9 +75,13 @@ func (h userHandler) Login(c *fiber.Ctx) error {
 		if err != nil {
 			return c.Status(http.StatusInternalServerError).JSON(fiber.Map{"Error": "Failed to generate token"})
 		}
-
+		loginLog := "User " + response.UUID.String() + " has been logged in"
+		logs.Info(loginLog)
 		return c.JSON(fiber.Map{"token": tokenString})
+
 	} else {
+		loginLog := "User " + response.UUID.String() + " can't log in because password is incorrect\ncompare: " + compare.Error() + "\nIncorrect password: " + request.Password
+		logs.Error(loginLog)
 		return c.JSON(fiber.Map{"Error": "Password is incorrect"})
 	}
 }
@@ -87,4 +94,20 @@ func (h userHandler) GetAllUsers(c *fiber.Ctx) error {
 	}
 
 	return c.JSON(users)
+}
+func (h userHandler) GetMyAccount(c *fiber.Ctx) error {
+	uuid, err := uuid.Parse(c.Locals("uuid").(string))
+	if err != nil {
+		return c.Status(http.StatusInternalServerError).JSON(fiber.Map{
+			"Error": "Failed to parse uuid",
+		})
+	}
+	user, err := h.userSrv.GetUser(uuid)
+	if err != nil {
+		return c.Status(http.StatusInternalServerError).JSON(fiber.Map{
+			"Error": "Failed to get user",
+		})
+	}
+
+	return c.JSON(user)
 }

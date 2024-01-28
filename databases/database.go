@@ -3,6 +3,7 @@ package databases
 import (
 	"fmt"
 	"log"
+	"massage/logs"
 	"massage/repositories"
 	"os"
 	"time"
@@ -39,8 +40,7 @@ func CreateDB() (*gorm.DB, error) {
 		DryRun: false,
 	})
 	if err != nil {
-		fmt.Println("FAIL !!")
-		log.Fatal(err)
+		logs.Error(err)
 	}
 
 	table := fmt.Sprintf("set search_path=%v", viper.GetString("DB_TABLENAME"))

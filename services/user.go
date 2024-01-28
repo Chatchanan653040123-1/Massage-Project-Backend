@@ -22,14 +22,20 @@ type RegisterBody struct {
 type UUID struct {
 	UUID uuid.UUID `json:"id"`
 }
-type GetAllUsersResponse struct {
-	UUID     uuid.UUID `json:"uuid"`
+type GetUsersResponse struct {
+	UUID     uuid.UUID `json:"id"`
 	Username string    `json:"username"`
 	Avatar   string    `json:"avatar"`
+}
+type EntityPermission struct {
+	Role            string `json:"role"`
+	PermissionLevel int    `json:"permission_level"`
 }
 
 type UserService interface {
 	Register(RegisterBody) (*UUID, error)
 	Login(LoginBody) (*LoginBody, error)
-	GetAllUsers() ([]GetAllUsersResponse, error)
+	GetAllUsers() ([]GetUsersResponse, error)
+	GetUser(uuid uuid.UUID) (*GetUsersResponse, error)
+	GetEntityPermission(uuid.UUID) (*EntityPermission, error)
 }

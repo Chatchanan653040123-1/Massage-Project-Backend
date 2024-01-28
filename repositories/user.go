@@ -3,18 +3,20 @@ package repositories
 import "github.com/google/uuid"
 
 type Users struct {
-	UUID      uuid.UUID `gorm:"column:id"`
-	Username  string    `gorm:"username"`
-	Password  string    `gorm:"password"`
-	Email     string    `gorm:"unique"`
-	IsAdmin   bool      `gorm:"is_admin"`
-	CreatedAt string    `gorm:"created_at"`
-	UpdateAt  string    `gorm:"update_at"`
-	Avatar    string    `gorm:"avatar"`
+	UUID            uuid.UUID `gorm:"column:uuid"`
+	Username        string    `gorm:"column:username"`
+	Password        string    `gorm:"column:password"`
+	Email           string    `gorm:"column:email;unique"`
+	Role            string    `gorm:"column:role"`
+	PermissionLevel int       `gorm:"column:permission_level"`
+	CreatedAt       string    `gorm:"column:created_at"`
+	UpdatedAt       string    `gorm:"column:updated_at"`
+	Avatar          string    `gorm:"column:avatar"`
 }
 
 type UserRepository interface {
 	Register(Users) (*Users, error)
 	Login(Users) (*Users, error)
 	GetAllUsers() ([]Users, error)
+	GetUser(uuid.UUID) (*Users, error)
 }
