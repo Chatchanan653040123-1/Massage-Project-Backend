@@ -111,3 +111,25 @@ func (h userHandler) GetMyAccount(c *fiber.Ctx) error {
 
 	return c.JSON(user)
 }
+func (h userHandler) UpdateMyAccount(c *fiber.Ctx) error {
+	uuid, err := uuid.Parse(c.Locals("uuid").(string))
+	if err != nil {
+		return c.Status(http.StatusInternalServerError).JSON(fiber.Map{
+			"Error": "Failed to parse uuid",
+		})
+	}
+	request := services.RegisterBody{}
+	if err := c.BodyParser(&request); err != nil {
+		return c.Status(http.StatusInternalServerError).JSON(fiber.Map{
+			"Error": "Body Parser",
+		})
+	}
+	user, err := h.userSrv.UpdateMyAccount(uuid, request)
+	if err != nil {
+		return c.Status(http.StatusInternalServerError).JSON(fiber.Map{
+			"Error": "Failed to update user",
+		})
+	}
+
+	return c.JSON(user)
+}

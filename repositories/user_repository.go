@@ -64,3 +64,31 @@ func (r userRepositoryDB) GetUser(uuid uuid.UUID) (*Users, error) {
 
 	return &user, nil
 }
+func (r userRepositoryDB) UpdateAccount(uuid uuid.UUID, user Users) (*Users, error) {
+	err := r.db.Model(&user).Where("uuid = ?", uuid).Updates(Users{
+		UUID:            uuid,
+		Username:        user.Username,
+		Password:        user.Password,
+		Role:            user.Role,
+		Email:           user.Email,
+		PermissionLevel: user.PermissionLevel,
+		Avatar:          user.Avatar,
+		UpdatedAt:       user.UpdatedAt,
+	})
+	if err.Error != nil {
+		logs.Error(err.Error)
+		return nil, err.Error
+	}
+
+	return &user, nil
+}
+func (r userRepositoryDB) DeleteAccount(uuid uuid.UUID) (*Users, error) {
+	var user Users
+	err := r.db.Where("uuid = ?", uuid).Delete(&user)
+	if err.Error != nil {
+		logs.Error(err.Error)
+		return nil, err.Error
+	}
+
+	return &user, nil
+}

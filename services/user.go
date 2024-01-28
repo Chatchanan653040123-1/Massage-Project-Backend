@@ -31,11 +31,21 @@ type EntityPermission struct {
 	Role            string `json:"role"`
 	PermissionLevel int    `json:"permission_level"`
 }
-
+type UpdateUserRequest struct {
+	Username        string `json:"username"`
+	Email           string `json:"email"`
+	Password        string `json:"password"`
+	Avatar          string `json:"avatar"`
+	Role            string `json:"role"`
+	PermissionLevel int    `json:"permission_level"`
+}
 type UserService interface {
 	Register(RegisterBody) (*UUID, error)
 	Login(LoginBody) (*LoginBody, error)
 	GetAllUsers() ([]GetUsersResponse, error)
 	GetUser(uuid uuid.UUID) (*GetUsersResponse, error)
+	UpdateMyAccount(uuid.UUID, RegisterBody) (*UUID, error)
+	UpdateAccount(uuid.UUID, UpdateUserRequest) (*UUID, error)
+	DeleteAccount(uuid.UUID) (*UUID, error)
 	GetEntityPermission(uuid.UUID) (*EntityPermission, error)
 }

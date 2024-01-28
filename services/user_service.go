@@ -121,3 +121,68 @@ func (s userService) GetEntityPermission(uuid uuid.UUID) (*EntityPermission, err
 	}
 	return &entityPermission, nil
 }
+func (s userService) UpdateMyAccount(uuid uuid.UUID, req RegisterBody) (*UUID, error) {
+	password, err := bcrypt.GenerateFromPassword([]byte(req.Password), 10)
+	if err != nil {
+		logs.Error("Failed to hash password")
+		return nil, errs.NewUnexpectedError("Failed to hash password")
+	}
+
+	user := repositories.Users{
+		Username:  req.Username,
+		Password:  string(password),
+		Avatar:    req.Avatar,
+		UpdatedAt: time.Now().Format("2006-1-2 15:04:05"),
+	}
+
+	newUser, err := s.userRepo.UpdateAccount(uuid, user)
+	if err != nil {
+		logs.Error(err)
+		return nil, errs.NewUnexpectedError("Failed to update user")
+	}
+
+	userResponse := UUID{
+		UUID: newUser.UUID,
+	}
+	return &userResponse, nil
+}
+func (s userService) UpdateAccount(uuid uuid.UUID, req UpdateUserRequest) (*UUID, error) {
+	password, err := bcrypt.GenerateFromPassword([]byte(req.Password), 10)
+	if err != nil {
+		logs.Error("Failed to hash password")
+		return nil, errs.NewUnexpectedError("Failed to hash password")
+	}
+
+	user := repositories.Users{
+		Username:        req.Username,
+		Password:        string(password),
+		Email:           req.Email,
+		Role:            req.Role,
+		PermissionLevel: req.PermissionLevel,
+		Avatar:          req.Avatar,
+		UpdatedAt:       time.Now().Format("2006-1-2 15:04:05"),
+	}
+
+	newUser, err := s.userRepo.UpdateAccount(uuid, user)
+	if err != nil {
+		logs.Error(err)
+		return nil, errs.NewUnexpectedError("Failed to update user")
+	}
+
+	userResponse := UUID{
+		UUID: newUser.UUID,
+	}
+	return &userResponse, nil
+}
+func (s userService) DeleteAccount(uuid uuid.UUID) (*UUID, error) {
+	newUser, err := s.userRepo.DeleteAccount(uuid)
+	if err != nil {
+		logs.Error(err)
+		return nil, errs.NewUnexpectedError("Failed to delete user")
+	}
+
+	userResponse := UUID{
+		UUID: newUser.UUID,
+	}
+	return &userResponse, nil
+}

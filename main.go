@@ -57,11 +57,14 @@ func main() {
 	//user
 	normalUser := authorized.Group("/user", userHandler.UserPermissionLevel1())
 	normalUser.Get("/account", userHandler.GetMyAccount)
+	normalUser.Put("/update", userHandler.UpdateMyAccount)
 	//admin
-	normalAdmin := authorized.Group("/admin", userHandler.AdminPermissionLevel1())
+	normalAdmin := authorized.Group("/permission_level1", userHandler.AdminPermissionLevel1())
 	normalAdmin.Get("/get/:uuid", userHandler.GetUser)
-	superAdmin := authorized.Group("/admin", userHandler.AdminPermissionLevel2())
-	superAdmin.Get("/getall", userHandler.GetAllUsers)
+	normalAdmin.Get("/getall", userHandler.GetAllUsers)
+	superAdmin := authorized.Group("/permission_level2", userHandler.AdminPermissionLevel2())
+	superAdmin.Delete("/delete/:uuid", userHandler.DeleteAccount)
+	superAdmin.Put("/update/:uuid", userHandler.UpdateAccount)
 
 	logData := fmt.Sprintf("Server is running....\nService: %v\n Ip: %v\n Port: %v\n Date: %v %v %v\n Time: %v:%v:%v", viper.GetString("APP_NAME"), viper.GetString("DB_HOST"), viper.GetInt("APP_PORT"), time.Now().Day(), time.Now().Month(), time.Now().Year(), time.Now().Hour(), time.Now().Minute(), time.Now().Second())
 	logs.Info(logData)
