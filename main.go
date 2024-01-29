@@ -54,14 +54,16 @@ func main() {
 	app.Post("/login", userHandler.Login)
 	//when entity is authenticated
 	authorized := app.Group("/authorized", handlers.JWTAuthen())
-	//user
+	//normal user
 	normalUser := authorized.Group("/user", userHandler.UserPermissionLevel1())
 	normalUser.Get("/account", userHandler.GetMyAccount)
 	normalUser.Put("/update", userHandler.UpdateMyAccount)
+	normalUser.Post("/create_group", userHandler.CreateGroup)
 	//admin
 	normalAdmin := authorized.Group("/permission_level1", userHandler.AdminPermissionLevel1())
 	normalAdmin.Get("/get/:uuid", userHandler.GetUser)
 	normalAdmin.Get("/getall", userHandler.GetAllUsers)
+	//super admin
 	superAdmin := authorized.Group("/permission_level2", userHandler.AdminPermissionLevel2())
 	superAdmin.Delete("/delete/:uuid", userHandler.DeleteAccount)
 	superAdmin.Put("/update/:uuid", userHandler.UpdateAccount)

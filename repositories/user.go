@@ -5,7 +5,7 @@ import (
 )
 
 type Users struct {
-	UUID            uuid.UUID `gorm:"column:uuid"`
+	UUID            uuid.UUID `gorm:"primaryKey"`
 	Username        string    `gorm:"column:username"`
 	Password        string    `gorm:"column:password"`
 	Email           string    `gorm:"column:email;unique"`
@@ -15,6 +15,12 @@ type Users struct {
 	CreatedAt       string    `gorm:"column:created_at"`
 	UpdatedAt       string    `gorm:"column:updated_at"`
 }
+type Groups struct {
+	UUID   uuid.UUID `gorm:"primaryKey"`
+	Name   string    `gorm:"column:name"`
+	UserID uuid.UUID `gorm:"type:uuid;column:user_id;not null;"`
+	User   Users     `gorm:"foreignKey:UserID"`
+}
 
 type UserRepository interface {
 	Register(Users) (*Users, error)
@@ -23,4 +29,5 @@ type UserRepository interface {
 	GetUser(uuid.UUID) (*Users, error)
 	UpdateAccount(uuid.UUID, Users) (*Users, error)
 	DeleteAccount(uuid.UUID) (*Users, error)
+	CreateGroup(Groups) (*Groups, error)
 }

@@ -23,6 +23,22 @@ type userHandler struct {
 func NewUserHandler(userSrv services.UserService) userHandler {
 	return userHandler{userSrv: userSrv}
 }
+func (h userHandler) CreateGroup(c *fiber.Ctx) error {
+	request := services.GroupRequest{}
+	err := c.BodyParser(&request)
+	if err != nil {
+		return c.Status(http.StatusInternalServerError).JSON(fiber.Map{
+			"Error": "Body Parser",
+		})
+	}
+	response, err := h.userSrv.CreateGroup(request)
+	if err != nil {
+		return c.Status(http.StatusInternalServerError).JSON(fiber.Map{
+			"Error": "Failed to create group",
+		})
+	}
+	return c.JSON(response)
+}
 func (h userHandler) Registers(c *fiber.Ctx) error {
 	request := services.RegisterBody{}
 	err := c.BodyParser(&request)

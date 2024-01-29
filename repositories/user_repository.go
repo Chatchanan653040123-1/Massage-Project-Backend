@@ -92,3 +92,12 @@ func (r userRepositoryDB) DeleteAccount(uuid uuid.UUID) (*Users, error) {
 
 	return &user, nil
 }
+func (r userRepositoryDB) CreateGroup(group Groups) (*Groups, error) {
+	err := r.db.Create(&group)
+	if err.Error != nil {
+		logs.Error(err.Error)
+		return nil, err.Error
+	}
+
+	return &group, nil
+}

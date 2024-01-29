@@ -52,5 +52,6 @@ func CreateDB() (*gorm.DB, error) {
 func AutoMigrate(am *gorm.DB) {
 	am.Debug().AutoMigrate(
 		&repositories.Users{},
+		&repositories.Groups{},
 	)
 }

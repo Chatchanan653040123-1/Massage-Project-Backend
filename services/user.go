@@ -39,6 +39,11 @@ type UpdateUserRequest struct {
 	Role            string `json:"role"`
 	PermissionLevel int    `json:"permission_level"`
 }
+type GroupRequest struct {
+	UUID   uuid.UUID `json:"id"`
+	Name   string    `json:"name"`
+	UserID uuid.UUID `json:"user_id"`
+}
 type UserService interface {
 	Register(RegisterBody) (*UUID, error)
 	Login(LoginBody) (*LoginBody, error)
@@ -48,4 +53,5 @@ type UserService interface {
 	UpdateAccount(uuid.UUID, UpdateUserRequest) (*UUID, error)
 	DeleteAccount(uuid.UUID) (*UUID, error)
 	GetEntityPermission(uuid.UUID) (*EntityPermission, error)
+	CreateGroup(GroupRequest) (*UUID, error)
 }

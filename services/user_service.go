@@ -186,3 +186,18 @@ func (s userService) DeleteAccount(uuid uuid.UUID) (*UUID, error) {
 	}
 	return &userResponse, nil
 }
+func (s userService) CreateGroup(group GroupRequest) (*UUID, error) {
+	newGroup, err := s.userRepo.CreateGroup(repositories.Groups{
+		UUID:   uuid.New(),
+		Name:   group.Name,
+		UserID: group.UserID,
+	})
+	if err != nil {
+		logs.Error(err)
+		return nil, errs.NewUnexpectedError("Failed to create group")
+	}
+	groupResponse := UUID{
+		UUID: newGroup.UUID,
+	}
+	return &groupResponse, nil
+}
