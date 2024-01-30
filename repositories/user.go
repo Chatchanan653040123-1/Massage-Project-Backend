@@ -17,7 +17,7 @@ type Users struct {
 }
 type Groups struct {
 	UUID   uuid.UUID `gorm:"primaryKey"`
-	Name   string    `gorm:"column:name"`
+	Name   string    `gorm:"column:name;unique"`
 	UserID uuid.UUID `gorm:"type:uuid;column:user_id;not null;"`
 	User   Users     `gorm:"foreignKey:UserID"`
 }
