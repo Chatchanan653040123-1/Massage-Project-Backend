@@ -8,12 +8,6 @@ RUN go build -o main main.go
 FROM alpine:3.18
 WORKDIR /app
 COPY --from=builder /app/main .
-COPY configs/ /app/configs/
-COPY errors/ /app/errors/
-COPY handlers/ /app/handlers/
-COPY logs/ /app/logs/
-COPY repositories/ /app/repositories/
-COPY services/ /app/services/
-COPY databases/ /app/databases/
-EXPOSE 8080
+COPY . /app/
+EXPOSE 5000
 CMD ["/app/main"]

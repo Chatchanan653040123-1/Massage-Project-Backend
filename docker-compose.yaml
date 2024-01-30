@@ -1,0 +1,18 @@
+version: '3'
+services:
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=Cn16022547!
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - 5432:5432 # 5432 is the port on the host machine, 5432 is the port inside the container
+  authentication:
+    image: authentication
+    restart: always
+    depends_on:
+      - postgres
+    ports:
+      - 13000:5000 # 13000 is the port on the host machine, 5000 is the port inside the container

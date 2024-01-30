@@ -73,7 +73,7 @@ func main() {
 	app.Listen(fmt.Sprintf(":%v", viper.GetInt("APP_PORT")))
 }
 func initConfig() {
-	err := godotenv.Load("configs/.env")
+	err := godotenv.Load(".env")
 	if err != nil {
 		logs.Error("Error loading env file")
 	}
