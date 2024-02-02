@@ -31,7 +31,7 @@ func main() {
 	app := fiber.New()
 
 	app.Use(cors.New(cors.Config{
-		AllowOrigins: "*",
+		AllowOrigins: "*", //http://localhost:5000 if you want to allow only local origin
 		AllowHeaders: "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, X-Max",
 	}))
 
@@ -56,17 +56,17 @@ func main() {
 	authorized := app.Group("/authorized", handlers.JWTAuthen())
 	//normal user
 	normalUser := authorized.Group("/user", userHandler.UserPermissionLevel1())
-	normalUser.Get("/account", userHandler.GetMyAccount)
-	normalUser.Put("/update", userHandler.UpdateMyAccount)
-	normalUser.Post("/create_group", userHandler.CreateGroup)
+	normalUser.Get("/", userHandler.GetMyAccount)
+	normalUser.Put("/", userHandler.UpdateMyAccount)
+	normalUser.Post("/", userHandler.CreateGroup)
 	//admin
 	normalAdmin := authorized.Group("/permission_level1", userHandler.AdminPermissionLevel1())
-	normalAdmin.Get("/get/:uuid", userHandler.GetUser)
-	normalAdmin.Get("/getall", userHandler.GetAllUsers)
+	normalAdmin.Get("/:uuid", userHandler.GetUser)
+	normalAdmin.Get("/", userHandler.GetAllUsers)
 	//super admin
 	superAdmin := authorized.Group("/permission_level2", userHandler.AdminPermissionLevel2())
-	superAdmin.Delete("/delete/:uuid", userHandler.DeleteAccount)
-	superAdmin.Put("/update/:uuid", userHandler.UpdateAccount)
+	superAdmin.Delete("/:uuid", userHandler.DeleteAccount)
+	superAdmin.Put("/:uuid", userHandler.UpdateAccount)
 
 	logData := fmt.Sprintf("Server is running....\nService: %v\n Ip: %v\n Port: %v\n Date: %v %v %v\n Time: %v:%v:%v", viper.GetString("APP_NAME"), viper.GetString("DB_HOST"), viper.GetInt("APP_PORT"), time.Now().Day(), time.Now().Month(), time.Now().Year(), time.Now().Hour(), time.Now().Minute(), time.Now().Second())
 	logs.Info(logData)

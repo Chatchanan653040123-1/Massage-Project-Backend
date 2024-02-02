@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/gtuk/discordwebhook"
+	"github.com/spf13/viper"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 )
@@ -47,7 +48,7 @@ func Error(message interface{}, field ...zap.Field) {
 	}
 }
 func DiscordBot(messageOfLog string, messageType string) {
-	var url = "https://discord.com/api/webhooks/1183116866491797596/t5IB1zMCfHPe8_KILn-FHv3c68EjiX_Bw5OnxNFRLwdayE0mwmlJC9jnYtoSp6ryxHr9"
+	var url = viper.GetString("DISCORD_WEBHOOK_URL")
 	message := discordwebhook.Message{
 		Username: &messageType,
 		Content:  &messageOfLog,
